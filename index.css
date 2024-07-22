@@ -1,3 +1,45 @@
-#parent{
-color:red;
+.header {
+display: flex;
+justify-content: space-between;
+border: 1px solid black;
+height: 100px;
+}
+.logo{
+    width: 120px;
+    height: 100px;
+}
+.nav-items{
+padding: 0px 20px;
+}
+.nav-items>ul>li{
+    padding: 10px;
+    margin: 10px;
+}
+.nav-items>ul{
+    font-size: 24px;
+    display: flex;
+    list-style-type: none ;
+}
+.res-card{
+    padding: 5px;
+    width: 220px;
+    height: 320px;
+}
+.res-card:hover{
+    border: 1px solid black;
+    cursor: pointer;
+}
+.search{
+    padding: 10px;
+}
+.res-logo{
+    width: 100%;
+}
+.res-container{
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+
+    flex-wrap: wrap;
+    margin: 5px;
 }
