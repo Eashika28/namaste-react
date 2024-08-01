@@ -9,7 +9,7 @@ const RestaurantCard = (props) => {
            costForTwo,
            deliveryTime
   } = resData?.data
-    console.log(cloudinaryImageId+"---------");
+   // console.log(cloudinaryImageId+"---------");
   return(
   <div className="res-card" style={{backgroundColor:"#f0f0f0"}}>
   <img className="res-logo" alt="res-logo" src=
