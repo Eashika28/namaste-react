@@ -12,30 +12,25 @@ const Body = () => {
   },[]);
 
  const fetchData = async () => {
-  try{
-  const data = await fetch("https://www.swiggy.com/dapi/cart");
-  if(!data.ok){
-    throw new Error(`HTTP error! status: ${data.status}`);
-  }
-  //https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING
+  
+  const data = await fetch("https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.466080617452484&lng=78.3657343313098&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+  
   const json = await data.json();
-  console.log(json);
   //Optional Chaining
-  const cartItems = json?.data?.cartItems || {};
-      const itemsArray = Object.values(cartItems).flatMap(item => item.items);
+  setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+  console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
-      setListOfRestaurants(itemsArray);
- }
- catch(error){
-  console.error("error fetching data", error);
- };
+      setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
- //
     return listOfRestaurants.length == 0 ? (
     <Shimmer/>
     ) : (
       <div className="body">
       <div className="filter">
+      <div className="search">
+        <input type="text" className="search-box"/>
+        <button>Search</button>
+      </div>
         <button className="filter-btn" onClick={()=>{
          const filterdList = listOfRestaurants.filter(
             (res)=> res.data.avgRating>4
